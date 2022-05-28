@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React from 'react';
 import Book from './components/Book';
-import './App.css';
+import './Home.css';
 
-class App extends React.Component {
+class Home extends React.Component {
   state = {
     isLoading: true,
     books: [],
@@ -62,4 +62,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Home;
