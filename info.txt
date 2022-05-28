@@ -1,0 +1,8 @@
+Token
+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
+
+http://api.kcisa.kr/openapi/service/rest/meta13/getKPEF0103?serviceKey=2c36ce87-f468-43a4-8fdc-fc6537b3d966&numOfRows=10&pageNo=5
+
+https://www.culture.go.kr/data/openapi/openapiView.do?id=366&category=F&gubun=A
+
+2c36ce87-f468-43a4-8fdc-fc6537b3d966
