@@ -1,17 +1,17 @@
 import axios from 'axios';
 import React from 'react';
-import Book from './components/Book';
-import './Home.css';
+import Festival from './components/Festival';
+import './Festival.css';
 
 class Home extends React.Component {
   state = {
     isLoading: true,
-    books: [],
+    festivals: [],
     count: 5,
   };
 
   render() {
-    const { isLoading, books } = this.state;
+    const { isLoading, festivals } = this.state;
     return (
       <section className="container">
         {isLoading ? (
@@ -19,16 +19,16 @@ class Home extends React.Component {
             <span className="loader-text">Loading...</span>
           </div>
         ) : (
-          <div className="books">
-            {books.map((book) => {
+          <div className="festivals">
+            {festivals.map((festival) => {
               return (
-                //title, description, rights, extent, referenceIdentifier
-                <Book
-                  title={book.title}
-                  description={book.description}
-                  rights={book.rights}
-                  extent={book.extent}
-                  referenceIdentifier={book.referenceIdentifier}
+                <Festival
+                  UC_SEQ={festival.key}
+                  TITLE={festival.title}
+                  SUBTITLE={festival.subTitle}
+                  GUGUN_NM={festival.location}
+                  ITEMCNTNTS={festival.contents}
+                  MAIN_IMG_THUMB={festival.img}
                 />
               );
             })}
@@ -38,16 +38,16 @@ class Home extends React.Component {
     );
   }
 
-  getBooks = async () => {
+  getfestivals = async () => {
     try {
       const {
         data: {
-          data: { books },
+          data: { festivals },
         },
       } = await axios.get(
-        'http://api.kcisa.kr/openapi/service/rest/meta13/getKPEF0103?serviceKey=2c36ce87-f468-43a4-8fdc-fc6537b3d966',
+        'https://apis.data.go.kr/6260000/FestivalService/getFestivalKr?ServiceKey=HJ68D5bz%2FqRPlhL9cllA0ZxfYcX1FOlGM4Z7rKvTLbTy2BgxEkibizeIrqVRx1yq4FopjvseaR151d%2FJWf6a9A%3D%3D&resultType=json&numOfRows=5&pageNo=1',
       );
-      this.setState({ books: books, isLoading: false });
+      this.setState({ festivals: festivals, isLoading: false });
     } catch (err) {
       console.log('통신시 오류가 발생했습니다.');
       console.log(err);
@@ -58,7 +58,7 @@ class Home extends React.Component {
     // setTimeout(() => {
     //   this.setState({ isLoading: false });
     // }, 5000);
-    this.getBooks();
+    this.getfestivals();
   }
 }
 
